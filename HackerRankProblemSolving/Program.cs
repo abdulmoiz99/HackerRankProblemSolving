@@ -10,13 +10,14 @@ namespace HackerRankProblemSolving
     {
         static void Main(string[] args)
         {
-            List<int> list = new List<int> { 1, 2, 3, 4, 5 };
-            miniMaxSum(list);
+            List<int> list = new List<int> { 4,4,1,3};
+            Console.WriteLine(birthdayCakeCandles(list));
         }
-        public static void miniMaxSum(List<int> arr)
+        public static int birthdayCakeCandles(List<int> candles)
         {
-            arr.Sort();
-            Console.Write(arr.GetRange(0, 4).Sum() + " " + arr.GetRange(1, 4).Sum());
+           
+           return candles.Where(x => x.Equals(candles.Max())).Count();
+           
         }
     }
 }
