@@ -10,27 +10,27 @@ namespace HackerRankProblemSolving
     {
         static void Main(string[] args)
         {
-            List<int> list = new List<int> { 4, 4, 1, 3 };
-            Console.WriteLine(birthdayCakeCandles(list));
+            List<int> list = new List<int> {1,2,3,4,5 };
+            miniMaxSum(list);
         }
-        public static int birthdayCakeCandles(List<int> candles)
+        public static void miniMaxSum(List<int> arr)
         {
-            int max = candles.Max();
-            int maxCount = 0;
-            candles.Sort();
-            for (int i = candles.Count-1; i >= 0; i--)
+
+            arr.Sort();
+            Int64 min = 0;
+            Int64 max = 0;
+            for (int i = 0; i < arr.Count; i++)
             {
-                if (candles[i] == max)
+                if (i<arr.Count-1)
                 {
-                    maxCount++;
+                    min += arr[i];
                 }
-                else
+                if (i > 0)
                 {
-                    break;
+                    max += arr[i];
                 }
             }
-            return maxCount;
-
+            Console.WriteLine(min + " " +max);
         }
     }
 }
