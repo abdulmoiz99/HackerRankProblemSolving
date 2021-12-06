@@ -10,14 +10,27 @@ namespace HackerRankProblemSolving
     {
         static void Main(string[] args)
         {
-            List<int> list = new List<int> { 4,4,1,3};
+            List<int> list = new List<int> { 4, 4, 1, 3 };
             Console.WriteLine(birthdayCakeCandles(list));
         }
         public static int birthdayCakeCandles(List<int> candles)
         {
-           
-           return candles.Where(x => x.Equals(candles.Max())).Count();
-           
+            int max = candles.Max();
+            int maxCount = 0;
+            candles.Sort();
+            for (int i = candles.Count-1; i >= 0; i--)
+            {
+                if (candles[i] == max)
+                {
+                    maxCount++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return maxCount;
+
         }
     }
 }
