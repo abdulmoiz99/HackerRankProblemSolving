@@ -10,25 +10,13 @@ namespace HackerRankProblemSolving
     {
         static void Main(string[] args)
         {
-            int[] c = {0,4 };
-            int n = 5;
-            Console.WriteLine(flatlandSpaceStations(n, c));
+            List<int> list = new List<int> { 1, 2, 3, 4, 5 };
+            miniMaxSum(list);
         }
-        static int flatlandSpaceStations(int n, int[] c)
+        public static void miniMaxSum(List<int> arr)
         {
-            Array.Sort(c);
-            int max = 0;
-            if (n == c.Length) return 0;
-
-            List<int> arr = Enumerable.Range(0, n).ToList().Except(c.ToList()).ToList(); // create a list of city and exclude the space station 
-            int nearest = 0;
-            foreach(var item in arr)
-            {
-                nearest = c.OrderBy(x => Math.Abs((long)x - item)).First();
-                nearest = Math.Abs(nearest - item);
-                if (nearest > max) max = nearest;
-            }
-            return max;
+            arr.Sort();
+            Console.Write(arr.GetRange(0, 4).Sum() + " " + arr.GetRange(1, 4).Sum());
         }
     }
 }
