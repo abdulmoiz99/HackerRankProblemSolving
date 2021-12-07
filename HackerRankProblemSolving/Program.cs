@@ -10,25 +10,22 @@ namespace HackerRankProblemSolving
     {
         static void Main(string[] args)
         {
-            List<int> grades = new List<int> { 75, 67, 40, 33 };
-            grades = gradingStudents(grades);
-            foreach (var item in grades)
-            {
-                Console.WriteLine(item);
-            }
+            string s = "12:01:00AM";
+           
+            Console.WriteLine(timeConversion(s));
         }
-        public static List<int> gradingStudents(List<int> grades)
+        public static string timeConversion(string s)
         {
-            int grade = 0;
-            for (int i = 0; i < grades.Count; i++)
+            if (s.Substring(s.Length - 2) ==  "AM" && s.Substring(0, 2) == "12") 
             {
-                grade = 5 * ((grades[i] - 1) / 5 + 1);
-                if (grade - grades[i] < 3)
-                {
-                    grades[i] = grade;
-                }
+                return "00" + s.Substring(2, s.Length - 4);
             }
-            return grades;
+            else if (s.Substring(s.Length - 2) == "PM")
+            {
+                int t = Convert.ToInt32(s.Substring(0, 2)) + 12;
+                return t + s.Substring(2, s.Length - 4); ;
+            }
+            return s;
         }
     }
 }
