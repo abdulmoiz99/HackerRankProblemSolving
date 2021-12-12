@@ -13,34 +13,31 @@ namespace HackerRankProblemSolving
             string s = "Pz-/aI/J`EvfthGH";
             //string s = "abc";
             int k = 66;
-            Console.WriteLine(caesarCipher(s, k));
         }
-        public static string caesarCipher(string s, int k)
+        public static string kangaroo(int x1, int v1, int x2, int v2)
         {
-            char[] cipherText = s.ToCharArray();
-            char[] letters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-            int index = 0;
-            for (   int i = 0; i < cipherText.Length; i++)
+            if (x2 > x1 && v2 > v1)
             {
-                if (letters.Contains(Char.ToUpper(cipherText[i])))
+                return "NO";
+            }
+            int pos1 = x1 + v1;
+            int pos2 = x2 + v2;
+
+            while (pos1 < 10000 && pos2 < 10000)
+            {
+                if (pos1 == pos2)
                 {
-                    index = Array.IndexOf(letters, Char.ToUpper(cipherText[i]));
-                    //(x+k) mod 26
-                    index = (verifyIndex(index + k)) % 26;
-                    if (Char.IsUpper(cipherText[i])) cipherText[i] = letters[index];
-                    else cipherText[i] = Char.ToLower(letters[index]);
+                    return "YES";
+                }
+                else
+                {
+                    pos1 += v1;
+                    pos2 += v2;
+
                 }
             }
-            return new string(cipherText);
+            return "NO";
         }
-        public static int verifyIndex(int sum)
-        {
-            while (true)
-            {
-                if (sum >25) sum = sum - 26;
-                else break;
-            }
-            return sum;
-        }
+
     }
 }
