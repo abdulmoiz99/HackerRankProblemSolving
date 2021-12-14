@@ -12,12 +12,21 @@ namespace HackerRankProblemSolving
         {
             Console.WriteLine(timeConversion("07:05:45PM"));
         }
-        public static string timeConversion(string s)
+        public static int sockMerchant(int n, List<int> ar)
         {
-            DateTime dt = Convert.ToDateTime(s);
-            String time24 = dt.ToString("HH:mm:ss");
-            return time24;
+            ar.Sort();
+            int count = 0;
+            for (int i = 0; i < ar.Count(); i++)
+            {
+                if (i + 1 < n && ar[i] == ar[i + 1])
+                {
+                    i++;
+                    count++;
+                }
+            }
+            return count;
         }
+
 
     }
 }
